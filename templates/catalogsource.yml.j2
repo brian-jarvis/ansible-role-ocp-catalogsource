@@ -5,7 +5,7 @@ metadata:
   name: {{ cat_name | lower }}
   namespace: {{ cat_namespace }}
 spec:
-  source_type: {{ source_type | default('grpc') }}
+  sourceType: {{ source_type | default('grpc') }}
   image: {{ cat_image }}
   displayName: {{ display_nm }}
   publisher: OperatorHub.io
