@@ -1,2 +1,15 @@
 ---
 # tasks file for ocp-catalogsource
+
+# Validate arguments
+
+# create the CatalogSource
+- name: Operator - Create CatalogSource
+  delegate_to: localhost
+  k8s:
+    kind: CatalogSource
+    name: "{{ cat_name }}"
+    namespace: "{{ cat_namespace }}"
+    resource_definition: "{{ lookup('template', 'catalogsource.yml.j2')}}"
+    state: "{{ state | default('present') }}"
+    kubeconfig: "{{ kube_config_path }}"

@@ -1,2 +1,4 @@
 ---
 # defaults file for ocp-catalogsource
+cat_image: "quay.io/operator-framework/{{ display_nm | lower | regex_replace(' ', '-') }}:latest"
+
