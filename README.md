@@ -29,9 +29,20 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+  # Add a catalog with the default quay.io image path
+  - name: Add Upstream Coomunity Catalog 
+    hosts: all
+    gather_facts: false
+    tasks:
+    - name: Install Upstream Community Operators
+      include_role:
+        name: ocp-catalogsource
+      vars:
+        cat_name: upstream-community-operators
+        cat_namespace: openshift-marketplace
+        display_nm: "Upstream Community Operators"
+        publisher: "OperatorHub.io"
+        state: present
 
 License
 -------
